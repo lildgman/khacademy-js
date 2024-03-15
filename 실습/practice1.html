@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style/style.css">
+
+    <script>
+        /**
+        박스 선택 후 “카테고리 선택“을 누르면 하단 네모에 선택한 카테고리 출력
+        이 때, “전체 선택“ 체크 박스 선택 시 모든 카테고리가 선택 되며, 선택 해제 시 모두 선택 해제 됨
+        또한 카테고리 체크박스를 전부 선택하면 “전체 선택“ 체크 박스가 선택되고 
+        하나라도 선택이 되어있지 않으면 “전체 선택“ 체크 박스는 선택 해제 됨.
+        */
+
+        function selectcategory(){
+            let genreList= document.getElementsByClassName("genre");
+            console.log(genreList);
+            let area = document.getElementById("result");
+            area.innerHTML = "";
+
+            for(let genre of genreList){
+                if (genre.checked){
+                    area.innerHTML += (genre.value+ "&nbsp");
+                }
+            }
+        }
+
+        function selectAll() {
+            let allCheckBox = document.getElementById("all");
+
+            let genreList= document.getElementsByClassName("genre");
+
+            if(allCheckBox.checked){
+                for(let genre of genreList) {
+                    genre.checked = true;
+                }
+            } else {
+                for(let genre of genreList) {
+                    genre.checked = false;
+                }
+            }
+        }
+
+        function selectAllTrigger(){
+            let allCheckBox = document.getElementById("all");
+            let genreList= document.getElementsByClassName("genre");
+
+            let checkAll = true;
+
+            for(let genre of genreList) {
+                if(!genre.checked) {
+                    checkAll = false;
+                }
+            }
+
+            allCheckBox.checked = checkAll;
+
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+
+    <fieldset>
+        <legend>취미</legend>
+        <div id="left-side">
+            <input type="checkbox" id="all" onchange="selectAll()">
+            <label for="all">전체선택</label>
+        </div>
+        <div id="center">
+            <div class="genre-list">
+                <input type="checkbox" value = "종합" class="genre" id="etc" onchange="selectAllTrigger()">
+                <label for="etc">종합</label>
+                <input type="checkbox" value = "소설" class="genre" id="novel" onchange="selectAllTrigger()">
+                <label for="novel">소설</label>
+                <input type="checkbox" value = "시/에세이" class="genre" id="poem" onchange="selectAllTrigger()">
+                <label for="poem">시/에세이</label>
+                <input type="checkbox" value = "경제/경영" class="genre" id="economy" onchange="selectAllTrigger()">
+                <label for="economy">경제/경영</label>
+                <input type="checkbox" value = "자기계발" class="genre" id="self-dev" onchange="selectAllTrigger()">
+                <label for="self-dev">자기계발</label>
+                <input type="checkbox" value = "아동" class="genre" id="kid" onchange="selectAllTrigger()">
+                <label for="kid">아동</label>
+
+            </div>
+            <div class="genre-list">
+                <input type="checkbox" value = "여행" class="genre" id="trip" onchange="selectAllTrigger()">
+                <label for="trip">여행</label>
+                <input type="checkbox" value = "과학" class="genre" id="science" onchange="selectAllTrigger()">
+                <label for="science">과학</label>
+                <input type="checkbox" value = "역사/문화" class="genre" id="history" onchange="selectAllTrigger()">
+                <label for="history">역사/문화</label>
+                <input type="checkbox" value = "외국어" class="genre" id="foreign" onchange="selectAllTrigger()">
+                <label for="foreign">외국어</label>
+                <input type="checkbox" value = "컴퓨터" class="genre" id="computer" onchange="selectAllTrigger()">
+                <label for="computer">컴퓨터</label>
+                <input type="checkbox" value = "만화" class="genre" id="cartoon" onchange="selectAllTrigger()">
+                <label for="cartoon">만화</label>
+            </div>
+        </div>
+
+    </fieldset>
+
+    <button onclick="selectcategory()" style="margin-top: 20px;">카테고리 선택</button>
+
+    <div id="result">
+        
+    </div>
+    
+</body>
+
+</html>
