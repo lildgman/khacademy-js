@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iterable</title>
+</head>
+<body>
+    <h2>iterable</h2>
+    <p id="demo"></p>
+    <script>
+        const name = "hello hi yo";
+
+        let text = "";
+        for(const n of name){
+            text += n + "<br>"
+        }
+
+        document.querySelector("#demo").innerHTML = text;
+    </script>
+    <br>
+    <hr>
+    <br>
+    <p id="demo2"></p>
+    <script>
+        const letters = ["a","b","c"];
+
+        let text2 = "";
+        for(const x of letters) {
+            text2 += x + "<br>";
+        }
+
+        document.querySelector("#demo2").innerHTML=text2;
+    </script>
+</body>
+</html>

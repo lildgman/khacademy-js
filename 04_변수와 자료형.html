@@ -43,7 +43,7 @@
         //name3 = 1234;
         console.log(name3);
 
-        let h2El2 = document.getElementById("discription");
+        const h2El2 = document.getElementById("discription");
         h2El2.innerHTML = "??";
 
         /**
@@ -51,14 +51,174 @@
         1) 일반적으로 영어 사용, 문자 숫자 모두 가능
         2) 특수문자 중 $와 _ 사용할 수 있음
         3) 숫자로 변수명 시작 불가능
-        4) 키워드를 변수명으로 사용 불가능
+        4) 키워드(예약어)를 변수명으로 사용 불가능
 
         Naming Type
 
         1) camelCase -> 대부분의 언어에서 많이 사용하며 단어의 시작마다 대문자로 구분
         2) snake_case -> 파이썬에서 주로 사용, 단어의 시작마다 _로 구분
         */
+
+
          
+    </script>
+
+    <h3>* 자료형</h3>
+    <p>
+        변수 선언 시 자료형을 별도로 지정하지 않음(자료형의 개념이 없는 건 아니다.)<br>
+        => 한줄씩 실행되는 인터프리터 언어 특성상 변수에 대입되는 값에 따라서 알아서 자료형이 결정된다.
+    </p>
+
+    <h4> 자바스크립트 자료형</h4>
+    <ul>
+        <li>Number(숫자형)</li>
+        <li>String(문자열)</li>
+        <li>Boolean(불리언)</li>
+        <li>undifined(언디파인드)</li>
+        <li>null(널)</li>
+        <li>symbol(심볼)</li>
+        <li>Object(객체)</li>
+        <!-- Function, Array, Object -->
+
+    </ul>
+    <button onclick="typeTest();">자료형테스트</button>
+    <script>
+        function typeTest() {
+            //Number
+            const age = 55;
+            const tempature = -10;
+            const pi = 3.141592;
+
+            console.log(typeof age);
+            console.log(typeof tempature);
+            console.log(typeof pi);
+
+            const infinity = Infinity;
+            const nInfinity = -Infinity;
+
+            console.log(infinity);
+            console.log(typeof infinity);
+            console.log(nInfinity);
+            console.log(typeof nInfinity);
+
+            // String
+            /**
+             * 1) newline => \n
+             * 2) tab => \t
+             * 3) \ => \\
+             */
+
+            const str = "ㅎㅇㅎㅇ요 \n \t 나이는 30살입니다.";
+            console.log(str);
+            console.log(typeof str);
+
+            const name = "오동건";
+            console.log("ㅎㅇ요" + name + "이다에요.");
+            console.log(`안녕하세요 ${name} 입니다.`);
+
+            // Boolean
+            const isTrue = true;
+            const isFalse = false;
+            console.log(typeof isTrue);
+            console.log(typeof isFalse);
+
+            /**
+            undefined
+            개발자가 직접 값을 초기화하지 않았을 때
+            지정되는 값이다.
+
+            undefined를 직접 넣어주는 것은 지양해야된다.
+
+            */
+
+            let num;
+            console.log(num);
+            console.log(typeof num);
+
+            /**
+            * null 타입
+            
+            undefined와 마찬가지로 값이 없다는 뜻이다.
+            다만 js에서는 개발자가 명시적으로 없는 값을 초기화할 때
+            null이 사용된다.
+            */
+
+            let init = null;
+            console.log(init);
+            console.log(typeof init);
+
+            /**
+            Symbol 타입
+            유일무이한 값을 생성할 때
+            다른 원시값들과 다르게 Symbol 함수를 호출해서 사용한다.
+            */
+
+            const tmp1 = '1' == 1;
+            const tmp2 = '1';
+            console.log(tmp1==tmp2); // ==로 비교 시 값만 string으로 변환해서 비교
+            console.log(tmp1===tmp2); // 자료형까지 그대로 비교
+
+            const tmp3 = Symbol('1');
+            const tmp4 = Symbol('1');
+            console.log(tmp3 === tmp4);
+
+            const myName = Symbol('name');
+            const obj = {
+                [myName]: "odg",
+                age : 55
+            }
+            console.log(obj);
+            //obj["name"] = "오동건";
+
+            /**
+            Object 타입
+            Map
+            키:벨류 쌍으로 이루어져있다.
+            key : value
+            */
+
+            const dictionary = {
+                red: "빨간색",
+                orange : "주황색",
+                yellow : "노란색"
+            }
+
+            console.log(dictionary.red);
+            console.log(dictionary['orange']);
+            console.log(typeof dictionary);
+            dictionary.red="붉은색";
+            dictionary['orange']="주홍색";
+            dictionary.blue = "파란색";
+            console.log(dictionary);
+
+            /**
+            Array 타입 - 값을 리스트로 나열할 수 있는 타입
+            */
+            const strArr = [];
+            strArr.push("빨강"); // [빨간색]
+            strArr.push("주황"); // [빨간색, 주황색]
+            console.log(strArr.pop());
+            console.log(strArr);
+            strArr[0] = "파랑색";
+            console.log(strArr[0]);
+
+            const customerList = [];
+            customerList.push({
+                name:"오동건",
+                age: 30,
+                gender : "남"
+            });
+
+            customerList.push({
+                name:"누구누구",
+                age: 29,
+                gender : "여"
+            });
+
+            console.log(customerList);
+
+            
+        }
     </script>
 </body>
 </html>

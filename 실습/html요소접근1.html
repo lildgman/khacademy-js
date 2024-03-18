@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Html태그에 접근하기</title>
+    <style>
+        #div1, #div2{
+            border: 1px solid black;
+            background-color: black;
+            height: 100px;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h3>문제1. 색상 선택 후 변경 버튼을 클릭하면 색상이 변경되도록</h3>
+    <div id="div1"></div>
+
+    <input type="color" id="selectColor">
+    <button id="colorBtn" onclick="changeColor()">변경</button>
+
+    <script>
+        const div1 = document.querySelector("#div1");
+        const selectColor = document.querySelector("#selectColor");
+        const colorBtn = document.querySelector("#colorBtn");
+        function changeColor() {
+            div1.style.backgroundColor = selectColor.value;
+        }
+    </script>
+
+    <hr><br><br>
+
+    <div id="div2"></div>
+    <button id="resize-50" onclick="resize(50, 50);">50*50</button>
+    <button id="resize-default" onclick="resize(100,100);">원본(100*100)</button>
+    <button id="resize-200" onclick="resize(200,200);">200*200</button>
+
+    <script>
+        const div2 = document.querySelector("#div2");
+
+        function resize(width, height) {
+            div2.style.width = width+"px";
+            div2.style.height = height+"px";
+        }
+    </script>
+</body>
+</html>

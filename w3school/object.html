@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Object</h2>
+    <p id="demo"></p>
+    <script>
+        let person = {
+            firstName : "John",
+            lastName : "Doe",
+            age : 50,
+            eyeColor : "blue"
+        };
+
+        document.querySelector("#demo").innerHTML = `성: ${person.firstName}, 이름: ${person.lastName}, 나이: ${person.age}`;
+    </script>
+
+    <p id="demo2"></p>
+    <script>
+        let person2 = {
+            firstName : "John",
+            lastName : "Doe",
+            age : 50,
+            eyeColor : "blue"
+        };
+
+        const x = person;
+        x.age = 10;
+        document.querySelector("#demo").innerHTML = `성: ${person.firstName}, 이름: ${person.lastName}, 나이: ${person.age}`;
+    </script>
+
+    <p id="demo3"></p>
+    <script>
+        let person3 = {
+            firstName : "John",
+            lastName : "Doe",
+            age : 50,
+            eyeColor : "blue"
+        };
+        
+        person3.nationality = "English";
+        document.querySelector("#demo").innerHTML = `성: ${person.firstName}, 이름: ${person.lastName}, 나이: ${person.age}`
+            +`, nationality = ${person3.nationality}`;
+        delete person3["nationality"];
+        document.querySelector("#demo").innerHTML = `성: ${person.firstName}, 이름: ${person.lastName}, 나이: ${person.age}`
+            +`, nationality = ${person3.nationality}`;
+
+        
+    </script>
+</body>
+</html>

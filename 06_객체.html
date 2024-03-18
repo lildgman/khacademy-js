@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .area {
+            background-color: lightgoldenrodyellow;
+            border: 1px solid black;
+        }
+
+        .small {
+            height: 250px;
+        }
+        .big {
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <h1>객체</h1>
+
+    <h3>*객체 선언 및 사용</h3>
+    <p>
+        객체는 중괄호 {}를 사용해서 생성하고, <br>
+        중괄호안에 이 객체에서 필요한 속성들을 정의한다.<br>
+        속성명 : 속성값(key : value)의 형태로 정의한다.<br>
+        속성값으로는 모든 자료형의 값을 담을 수 있음
+    </p>
+
+    <pre>
+        변수 = {
+            속성명 : 속성값,
+            속성명 : 속성값,
+            속성명 : 속성값,
+            속성명 : 속성값
+            ...
+        }
+    </pre>
+
+    <button onclick="test1()">실행</button>
+    <div id="area1" class="area big"></div>
+    <div id="area2" class="area small"></div>
+
+    <script>
+        function test1() {
+            const arr = ["Apple", 4000, "pickle", ["mango", "sugar"]];
+            // 자바스크립트의 배열 == 자바의 컬랙션(ArrayList)와 유사
+
+            const product = {
+                pName : "Apple",
+                price : 4000,
+                kind : "pickle",
+                ingredient : ["mango","sugar"],
+
+            };
+            // 자바스크립트에서의 객체 == 자바에서의 컬렉션(HashMap)
+
+            console.log(typeof product);
+            console.log(product);
+            
+            const area1 = document.querySelector("#area1");
+            area1.innerHTML += ("product : " + product + "<br>");
+
+            // 객체 속성에 접근하는 방법
+            // 방법1. 대괄호를 이용하는 방법: 객체명["속성명"]
+
+            area1.innerHTML += `<b>객체명['속성명(key)']으로 접근하기</b><br>`;
+            area1.innerHTML += `pName : ${product['pName']} <br>`;
+            area1.innerHTML += `price : ${product['price']} <br>`;
+            area1.innerHTML += `ingredient : ${product['ingredient'][0]} <br><br>`;
+
+            // 방법2. .을 이용해서 접근하는 방법: 객체명.속성명(key)
+            area1.innerHTML += `<b>객체명.속성명(key)으로 접근하기</b><br>`;
+            area1.innerHTML += `pName : ${product.pName} <br>`;
+            area1.innerHTML += `price : ${product.price} <br>`;
+            area1.innerHTML += `ingredient : ${product.ingredient[1]} <br><br>`;
+        }
+    </script>
+
+    <h3>*객체의 메소드 속성</h3>
+    <p>객체의 속성 중 함수자료형인 속성을 메소드라고 부른다.</p>
+
+    <button onclick="test4();">실행확인</button>
+    <div id="area4" class="area small"></div>
+
+    <script>
+        function test4() {
+            const area4 = document.querySelector("#area4");
+
+            const name = "odg";
+            const dog = {
+                name : "미니",
+                kind: "미니핀",
+                eat: function(food) {
+                    area4.innerHTML += `${this.kind} 종류인 ${this.name}가 ${food}를 먹고있습니다. <br>`;
+                }
+            };
+
+            dog.eat("사과");
+        }
+    </script>
+
+    <br>
+    <hr>
+    <br>
+
+    <h3>* 객체 배열을 사용한 다량의 데이터 관리</h3>
+    <button onclick="test5();">실행</button>
+    <div id="area5" class="area small"></div>
+
+    <script>
+        /**function getStudentList(callback) {
+            
+            // 서버에 요청 보냄
+
+            // 서버에 요청 도착
+            const result = [
+                {name: "ttt", java: 100, oracle:75, html:40},
+                {name: "rrr", java: 59, oracle:65, html:10},
+                {name: "www", java: 60, oracle:55, html:30},
+                {name: "aaa", java: 80, oracle:85, html:20}
+            ]
+
+            callback(result);
+        }*/
+
+        function test5() {
+            /*getStudentList(function(studentList){
+                console.log(studentList);
+            })*/
+
+            const studentList = [
+                {name: "ttt", java: 100, oracle:75, html:40},
+                {name: "rrr", java: 59, oracle:65, html:10},
+                {name: "www", java: 60, oracle:55, html:30},
+                {name: "aaa", java: 80, oracle:85, html:20}
+            ]
+            //getSum: 모든 점수의 합
+            //getAvg: 모든 점수의 평균 
+
+            for(let i = 0; i<studentList.length; i++) {
+
+            }
+
+            for(let i in studentList) {
+                studentList[i].getSum = function() {
+                    return this.java + this.oracle + this.html;
+                }
+
+                studentList[i].getAvg = function() {
+                    return Math.round(this.getSum() / 3.0*100)/100;
+                }
+            }
+
+            console.log(studentList);
+
+            const area5 = document.querySelector("#area5");
+
+            for(let student of studentList) {
+                area5.innerHTML += `이름: ${student.name}, 총점: ${student.getSum()}, 평균: ${student.getAvg()} <br>`;
+            }
+
+        }
+    </script>
+
+</body>
+</html>
