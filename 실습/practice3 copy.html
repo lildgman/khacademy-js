@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #idInput {
+            display: flex;
+        }
+
+        #pwdValidInput {
+            display: flex;
+        }
+    </style>
+</head>
+
+<body>
+    <fieldset>
+        <legend>회원가입</legend>
+        <div id="idInput">
+            아이디:
+            <input type="text" id="userId" class="input">
+            <div id="validIdDiv"></div>
+        </div>
+
+        <div id="pwdInput">
+            비밀번호:
+            <input type="password" id="userPwd" class="input">
+        </div>
+
+        <div id="pwdValidInput">
+            비밀번호 확인:
+            <input type="password" id="userPwdValid" class="input">
+            <div id="validPwd"></div>
+        </div>
+
+        <div id="nameInput">
+            이름:
+            <input type="name" id="userNameInput" class="input">
+        </div>
+
+        <div>
+            <button id="enroll">회원가입</button>
+        </div>
+
+        <script>
+            const userId = document.querySelector("#userId");
+
+            userId.addEventListener("focusout", (e) => {
+                const validIdDiv = document.querySelector("#validIdDiv");
+
+                if (userId.value === 'user01') {
+                    validIdDiv.innerHTML = "이미 존재하는 아이디입니다."
+                } else {
+                    validIdDiv.innerHTML = "생성 가능한 아이디입니다."
+                }
+            })
+
+        </script>
+
+    </fieldset>
+</body>
+
+</html>
