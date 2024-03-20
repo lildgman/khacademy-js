@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +13,7 @@
         }
     </style>
 </head>
+
 <body>
     <h1>이벤트(Event)</h1>
     <h2>1. 이벤트 모델 종류</h2>
@@ -32,11 +34,11 @@
 
         const btn1 = document.querySelector("#btn1");
 
-        btn1.onclick = function() {
+        btn1.onclick = function () {
             area1.innerHTML += "btn1이 클릭됨. <br>"
         }
 
-        document.querySelector("#btn2").onclick = function(){
+        document.querySelector("#btn2").onclick = function () {
             area1.innerHTML += "btn2가 클릭되면서 btn1의 이벤트가 제거됨 <br>";
             btn1.onclick = null;
         };
@@ -59,7 +61,7 @@
             document.querySelector('#area2').innerHTML += `두번째 버튼 클릭<br>`
         }
     </script>
-    
+
     <br>
     <hr>
     <br>
@@ -75,17 +77,17 @@
 
         // 이벤트를 걸고자하는 요소 객체.addEventListener("이벤트명", 이벤트 핸들러)
 
-        btn5.addEventListener("click", function(){
+        btn5.addEventListener("click", function () {
             alert("표준 이벤트 모델 테스트");
         });
 
-        btn5.addEventListener("mouseenter", function(){
-            btn5.innerHTML ="힝 속았지?";
+        btn5.addEventListener("mouseenter", function () {
+            btn5.innerHTML = "힝 속았지?";
         });
-        
-        let func = function(){
-            btn5.innerHTML ="눌러줘잉";
-            btn5.style.background="white";
+
+        let func = function () {
+            btn5.innerHTML = "눌러줘잉";
+            btn5.style.background = "white";
         };
         btn5.addEventListener("mouseout", func);
 
@@ -98,10 +100,10 @@
     <button id="btn7">표준이벤트 방식</button>
     <button onclick="test5(event);">인라인 이벤트 방식</button>
     <button>인라인 이벤트 방식2</button>
-    
+
     <script>
         const btn6 = document.querySelector("#btn6");
-        btn6.onclick = function(e){ // 이벤트 핸들러
+        btn6.onclick = function (e) { // 이벤트 핸들러
             console.log(e); // 이벤트에 관련된 정보가 들어있는 객체를 첫번째 인자로 넘겨준다.
             console.log(window.event);
 
@@ -115,14 +117,14 @@
             this.style.color = "red";
         }
 
-        document.getElementById("btn7").addEventListener("click",function(e) {
+        document.getElementById("btn7").addEventListener("click", function (e) {
             console.log(e.target);
             console.log(this);
         })
 
         function test5(event) {
             console.log(this);
-            event.target.backgroundColor="red";
+            event.target.backgroundColor = "red";
         }
     </script>
 
@@ -132,7 +134,7 @@
         - a 태크: 클릭 시 href에 제시되어 있는 url로 요청하는 기본이벤트 보유 <br>
         - form 내의 submit 버튼: 클릭 시 사용자가 입력한 값들을 action에 제시되어있는 url로 제출
         <br><br>
-        
+
         태그내에 기본적으로 설정되어있는 이벤트가 실행안되게끔 막고싶다. <br>
         => 이벤트 핸들러의 return 값을 false로 하면 기본 이벤트 실행 안됨 -> 이벤트 확산 방지
     </p>
@@ -144,14 +146,14 @@
     <a href="https://www.naver.com" onclick="return test6();">네이버로 이동</a>
     <script>
         function test6() {
-            if(5>3) {
+            if (5 > 3) {
                 return false;
             }
         }
     </script>
 
     <form action="test.do">
-        아이디 : <input type="text" name="userId">
+        아이디 : <input type="text" name="userId" id="user_id">
         <input type="submit" onclick="return validate()">
 
 
@@ -159,8 +161,18 @@
 
     <script>
         function validate() {
-            return false;
+            // 영문자 또는 숫자로만 5~12글자 이하가 맞는지 확인
+            // 조건에 부합하면 return;
+            // 조건에 맞지 않으면 return false;
+            const userId = document.querySelector("#user_id").value;
+            const regRxp = /^[a-zA-Z0-9]{5,12}$/;
+
+            if(!regRxp.test(userId)) { // regRxp.text(userId) -> 조건에 부합하지 않을 때 false
+                alert("유효한 아이디가 아닙니다.")
+                return false;
+            }
         }
     </script>
 </body>
+
 </html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <style>
+    fieldset,
+    #result_container {
+      width: 500px;
+      box-sizing: border-box;
+    }
+
+    #container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+    }
+
+    #result_container {
+
+      background-color: gray;
+      margin-top: 50px;
+      height: 100px;
+      display: flex;
+      flex-direction: column;
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <fieldset>
+    <legend>검색할 항목을 선택하세요.</legend>
+    <div id="container">
+      <div id="title_container">
+        <input type="radio" name="category" id="title" value="제목">
+        <label for="title">제목</label>
+      </div>
+      <div id="date_container">
+        <input type="radio" name="category" id="date" value="날짜">
+        <label for="date">날짜</label>
+      </div>
+      <div id="author_container">
+        <input type="radio" name="category" id="author" value="작성자">
+        <label for="author">작성자</label>
+      </div>
+    </div>
+  </fieldset>
+
+  <div id="result_container">
+
+
+  </div>
+  <script>
+    const titleSearch = "<dir>검색할 제목을 입력하세요: </dir>";
+    const dateSearch = "<dir>검색할 날짜를 입력하세요: </dir>";
+    const authorSearch = "<dir>검색할 작성자 아이디를 입력하세요: </dir>";
+    const searchDate = "<dir>"
+      + "<span><input type='date'>"
+      + "-"
+      + "<input type='date'></span>"
+      + "<span><button>검색</button></span>"
+      "</dir>";
+
+    const searchBar = "<dir><span><input type='text'></span><span><button>검색</button></span></dir>";
+    $("input[name='category']").change(function() {
+      if($("input[name='category']:checked").val()==='제목') {
+        $("#result_container").empty();
+        $("#result_container").append(titleSearch);
+        $("#result_container").append(searchBar);
+      }
+
+      else if($("input[name='category']:checked").val()==='날짜'){
+        $("#result_container").empty();
+        $("#result_container").append(dateSearch);
+        $("#result_container").append(searchDate);
+      }
+
+      else if($("input[name='category']:checked").val()==='작성자'){
+        $("#result_container").empty();
+        $("#result_container").append(authorSearch);
+        $("#result_container").append(searchBar);
+      }
+    })
+
+
+  </script>
+
+
+</body>
+
+</html>

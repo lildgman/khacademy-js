@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+  <title>Document</title>
+</head>
+
+<body>
+  <div>
+    <fieldset>
+      <legend>구매 정보</legend>
+      <ul>
+        <li>
+          <div>
+            <label for="">구매자:</label>
+            <input type="text" id="buyer" placeholder="구매자의 이름을 입력하세요.">
+          </div>
+        </li>
+        <li>
+          <div>
+            <label for="">상품명:</label>
+            <input type="text" id="productName" placeholder="구매 상품 명을 입력하세요.">
+          </div>
+        </li>
+        <li>
+          <div>
+            <label for="">가격:</label>
+            <input type="text" id="price" placeholder="구매 가격을 입력하세요.">
+          </div>
+        </li>
+        <li>
+          <div>
+            <label for="">구매 수량</label>
+            <input type="number" id="amount" placeholder="최소 10" min="10" max="100" step="10">
+          </div>
+        </li>
+        <li>
+          <label for="">납품 등급</label>
+          <input type="range" id="grade" min="1" max="9" step="2">
+        </li>
+        <li>
+          <label for="">기타 사항</label>
+          <textarea name="etc" id="etc" cols="30" rows="10"></textarea>
+        </li>
+      </ul>
+    </fieldset>
+    <button id="btn_print">출력</button>
+
+    <div id="print_div" style="width: 500px; height: 500px;"></div>
+
+    <script>
+      const buyer = document.querySelector("#buyer");
+      const productName = document.querySelector("#productName");
+      const price = document.querySelector("#price");
+      const amount = document.querySelector("#amount");
+      const grade = document.querySelector("#grade");
+      const etc = document.querySelector("#etc");
+      const btn = document.querySelector("#btn_print");
+      const print_div = document.querySelector("#print_div");
+
+      btn.onclick = function () {
+        print_div.innerHTML = `구매자 : ${buyer.value}님 <br>`
+                      + `상품 명 : ${productName.value} <br>`
+                      + `가격 : ${price.value}만원 <br>`
+                      + `구매 수량: ${amount.value}개 <br>`
+                      + `납품등급 : ${grade.value}등급 <br>`
+                      + `기타사항 : ${etc.value} <br>`;
+      }
+
+
+    </script>
+  </div>
+
+</body>
+
+</html>
